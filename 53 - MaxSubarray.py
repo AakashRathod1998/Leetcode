@@ -1,6 +1,19 @@
 # Sliding Window Technique
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
+
+        maxSum = nums[0]
+        currSum = 0
+
+        for i in nums:
+            if currSum < 0:
+                currSum = 0
+            currSum += i
+            maxSum = max(maxSum, currSum)
+            print(maxSum, currSum)
+        return maxSum
+
+# Approach 2
         left, right = 0, 0
         window_sum, max_sum = 0, float('-inf')
         while right < len(nums):
