@@ -2,6 +2,16 @@
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
 
+        maxSum = currMax = nums[0]
+
+        for i, num in enumerate(nums[1:]):
+            currMax = max(num, num+currMax)
+            maxSum = max(maxSum, currMax)
+        
+        return maxSum
+
+        
+# Approach 2
         maxSum = nums[0]
         currSum = 0
 
@@ -13,7 +23,7 @@ class Solution:
             print(maxSum, currSum)
         return maxSum
 
-# Approach 2
+# Approach 3
         left, right = 0, 0
         window_sum, max_sum = 0, float('-inf')
         while right < len(nums):
